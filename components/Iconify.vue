@@ -5,6 +5,7 @@
     icon: string;
     size: string | number;
     color: string;
+    inline: boolean;
   }
 
   defineOptions({
@@ -15,13 +16,14 @@
   const attrs = useAttrs();
 
   const bindAttrs = computed(() => {
-    const { icon, size, color } = props;
+    const { icon, size, color, inline } = props;
     const { class: className } = attrs;
     return {
       icon,
       width: size,
       height: size,
       color,
+      inline,
       class: className,
     };
   });

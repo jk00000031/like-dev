@@ -15,8 +15,7 @@
       const { clientWidth: rightWidth } = rightWrapperRef.value;
       const useX = leftWidth > rightWidth ? leftWidth : rightWidth;
       return {
-        left: useX + "px",
-        right: useX + "px",
+        width: useX + "px",
       };
     } else {
       return {};
@@ -26,16 +25,14 @@
 
 <template>
   <header class="h-16">
-    <div class="h-16 px-4 z-10 fixed top-0 left-0 w-full bg-white/80 backdrop-blur">
-      <div class="relative container mx-auto h-full flex items-center justify-between">
+    <div class="h-16 fixed top-0 left-0 z-50 w-full bg-white/80 backdrop-blur">
+      <div class="container mx-auto h-full flex items-center justify-between">
         <SiteLogo
           ref="leftWrapperRef"
           class="font-semibold"
-        />
-        <nav
-          class="absolute top-0 h-full px-4 bg-white/90 backdrop-blur text-xs"
           :style="calculateX"
-        >
+        />
+        <nav class="h-full px-4 text-xs">
           <ul class="h-full flex items-center justify-center space-x-2">
             <li class="h-full flex items-center">
               <NavItemDropdown
@@ -143,7 +140,8 @@
         </nav>
         <div
           ref="rightWrapperRef"
-          class="flex items-center space-x-2"
+          class="flex items-center justify-end space-x-4"
+          :style="calculateX"
         >
           <template v-if="token">
             <SiteProfileHeadCard />

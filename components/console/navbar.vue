@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-zinc-50 h-10 sticky top-16 left-0 w-full">
+  <nav class="bg-zinc-50/90 backdrop-blur h-12 sticky top-16 left-0 w-full z-10">
     <div class="h-full container mx-auto">
       <ul class="h-full flex items-center -mx-3 text-xs">
         <li class="h-full">

@@ -11,7 +11,7 @@
 <template>
   <main>
     <section
-      class="min-h-[640px] h-[calc(100vh-164px)] flex items-center border-t"
+      class="min-h-[640px] h-[calc(100vh-164px)] flex items-center"
       :style="bannerBackground"
     >
       <div class="container mx-auto -translate-y-10">
@@ -26,14 +26,19 @@
           </p>
         </div>
         <div class="space-y-4">
-          <p class="text-lg">解放浏览器标签，不再占用你私人收藏领地</p>
+          <p class="text-sm">解放浏览器标签，不再占用你私人收藏领地</p>
           <p>
-            <NButton
+            <DeButtonLink
+              to="/console/accounts/login"
               type="primary"
-              size="large"
-              class="px-8"
-              >开始使用</NButton
+              class="w-40"
             >
+              <span>开始使用</span>
+              <Iconify
+                icon="uiw:swap-right"
+                size="18"
+              />
+            </DeButtonLink>
           </p>
         </div>
       </div>

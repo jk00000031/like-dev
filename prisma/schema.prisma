@@ -32,7 +32,7 @@ model Users {
   isAdmin  Boolean  @default(false)
   createAt DateTime @default(now())
   profile  Json?
-  // status: 0-不可用，1-可用
+  // status: 0-封存，1-在用，2-离职，3-辞退
   status   Int      @default(1)
   projects Projects[]
   articles Articles[]

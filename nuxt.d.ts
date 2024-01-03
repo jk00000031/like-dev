@@ -5,3 +5,5 @@ declare module "vue" {
     [INSTALLED_KEY]: Boolean;
   }
 }
+
+declare module "chinese-lunar-calendar";

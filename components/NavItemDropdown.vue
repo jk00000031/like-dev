@@ -25,9 +25,9 @@
     >
       <div
         v-if="showPanel && props.panel"
-        class="absolute top-14 left-1 right-1 bg-white -z-[2] p-4 rounded-bl-lg rounded-br-lg shadow-lg"
+        class="absolute left-0 top-0 w-full bg-white/40 backdrop-blur -z-[1] pt-16 rounded-bl-lg rounded-br-lg shadow-lg"
       >
-        <div>
+        <div class="bg-white">
           <slot />
         </div>
       </div>
@@ -43,6 +43,6 @@
 
   .nav-item-enter-from,
   .nav-item-leave-to {
-    @apply -translate-y-full opacity-0;
+    @apply opacity-0;
   }
 </style>

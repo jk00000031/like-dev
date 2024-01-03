@@ -1,0 +1,124 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// 操作历史表
+model History {
+  id        Int     @id @default(autoincrement())
+  remark    String
+  userId    Int
+  user      Users   @relation(fields: [userId], references: [id])
+  projectId Int?
+  project   Projects?  @relation(fields: [projectId], references: [id])
+  articleId Int?
+  article   Articles?  @relation(fields: [articleId], references: [id])
+  bookContentId Int?
+  bookContent BookContents?  @relation(fields: [bookContentId], references: [id])
+}
+
+// 用户表
+model Users {
+  id       Int      @id @default(autoincrement())
+  account  String
+  name     String
+  nickName String
+  avatar   String?
+  phone    String   @unique(map: "User_phone_key")
+  isAdmin  Boolean  @default(false)
+  createAt DateTime @default(now())
+  profile  Json?
+  // status: 0-不可用，1-可用
+  status   Int      @default(1)
+  projects Projects[]
+  articles Articles[]
+  history  History[]
+  books    Books[]
+  notification  Notification[]
+}
+
+// 项目表
+model Projects {
+  id        Int     @id @default(autoincrement())
+  name      String
+  userId    Int
+  director  Users   @relation(fields: [userId], references: [id])
+  address   String
+  docLink   String
+  protographLink String?
+  designLink  String?
+  createAt  DateTime  @default(now())
+  descript  String
+  // status: 0-未上线，1-运行中，2-已下线
+  status    Int     @default(0)
+  history   History[]
+}
+
+// 分类表
+model Categorys {
+  id        Int     @id @default(autoincrement())
+  name      String
+  articles  Articles[]
+  books     Books[]
+}
+
+// 文章表
+model Articles {
+  id        Int     @id @default(autoincrement())
+  title     String
+  descript  String
+  content   String
+  userId    Int
+  author    Users   @relation(fields: [userId], references: [id])
+  createAt  DateTime  @default(now())
+  history   History[]
+  categoryId  Int
+  category  Categorys @relation(fields: [categoryId], references: [id])
+}
+
+// 书籍表
+model Books {
+  id        Int     @id @default(autoincrement())
+  name      String
+  descript  String
+  userId    Int
+  director  Users   @relation(fields: [userId], references: [id])
+  chapters  Chapters[]
+  categoryId  Int
+  category  Categorys @relation(fields: [categoryId], references: [id])
+}
+
+// 章节表
+model Chapters {
+  id        Int     @id @default(autoincrement())
+  title     String
+  bookId    Int
+  book      Books   @relation(fields: [bookId], references: [id])
+  createAt  DateTime  @default(now())
+  content   BookContents[]
+}
+
+// 书本内容表
+// 与文章表进行区分是不希望它们混在一起
+model BookContents {
+  id        Int     @id @default(autoincrement())
+  content   String
+  chapterId Int
+  chapter   Chapters  @relation(fields: [chapterId], references: [id])
+  createAt  DateTime  @default(now())
+  history   History[]
+}
+
+// 通知表
+// 比如后期加了项目计划，在计划即将到期还未完成时通知用户
+model Notification {
+  id        Int      @id @default(autoincrement())
+  content   String
+  createdAt DateTime @default(now())
+  userId    Int?
+  user      Users?    @relation(fields: [userId], references: [id])
+}

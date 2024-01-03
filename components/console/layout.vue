@@ -1,0 +1,4 @@
+<template>
+  <ConsoleNavbar />
+  <slot />
+</template>

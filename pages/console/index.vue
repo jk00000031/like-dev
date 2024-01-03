@@ -27,7 +27,7 @@
 <template>
   <ConsoleLayout>
     <main class="container mx-auto flex py-8 space-x-10">
-      <aside class="w-48 flex-shrink-0">
+      <aside class="w-56 flex-shrink-0">
         <div class="pb-4 mb-4 border-b relative">
           <div class="w-32 h-32 mx-auto rounded-full overflow-hidden flex items-center justify-center ring-8 ring-zinc-300">
             <img

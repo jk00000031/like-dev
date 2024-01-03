@@ -47,4 +47,9 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+
+  // ----
+  runtimeConfig: {
+    projectName: "DevExchange",
+  },
 });

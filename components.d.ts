@@ -14,7 +14,6 @@ declare module 'vue' {
     NInput: typeof import('naive-ui')['NInput']
     NInputGroup: typeof import('naive-ui')['NInputGroup']
     NInputGroupLabel: typeof import('naive-ui')['NInputGroupLabel']
-    NInputLabel: typeof import('naive-ui')['NInputLabel']
     NPopover: typeof import('naive-ui')['NPopover']
     NTabPane: typeof import('naive-ui')['NTabPane']
     NTabs: typeof import('naive-ui')['NTabs']

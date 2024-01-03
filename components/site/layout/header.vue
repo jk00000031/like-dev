@@ -28,7 +28,7 @@
   <header class="h-16">
     <div class="h-16 px-4 z-10 fixed top-0 left-0 w-full bg-white/80 backdrop-blur">
       <div class="relative container mx-auto h-full flex items-center justify-between">
-        <Site-logo
+        <SiteLogo
           ref="leftWrapperRef"
           class="font-semibold"
         />

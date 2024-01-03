@@ -1,75 +1,21 @@
-# Nuxt 3 Minimal Starter
+# Dev Exchange
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+本项目不支持他人分支推送合并，如果在使用过程中有问题反馈或觉得需要追加通用功能可在 Issue 中提出。  
+定制化功能在自身有能力扩展时请自行开发！
 
-## Setup
+## 部署
 
-Make sure to install the dependencies:
+本项目是在 nuxt server 上开发，因此在部署时只需完成以下三个步骤即可完成部署并访问。  
+在开始部署前，请在命令行工具安装依赖
 
-```bash
-# npm
-npm install
-
-# pnpm
+```base
+cd /[Your path]
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+1. 数据库推送
+   进入项目根目录 `/` 后执行命令 `pnpm dlx prisma db push`，数据库将推送到 `.env` 文件声明的 `DATABASE_URL` 地址上
+2. 项目构建
+   步骤 1 已经进入根目录，继续执行命令 `pnpm run build`
+3. 部署
+   本项目推荐使用 `pm2` 部署，先全局安装 `pm2`: `sudo pnpm add pm2 -g`，之后执行 `pnpm run start` 就完成啦！

@@ -1,39 +1,19 @@
 <script setup lang="ts">
   import { useProjectFindAll } from "~/composables/fetch/projects";
   import { useAuthorisationToken } from "~/composables/state/useAuthorisation";
-
-  const leftWrapperRef = ref();
-  const rightWrapperRef = ref();
   const token = useAuthorisationToken();
 
   const { data: projects, pending } = await useProjectFindAll();
   const projectList = computed<any>(() => toRaw(unref(projects))?.data);
-
-  const calculateX = computed(() => {
-    if (leftWrapperRef.value && rightWrapperRef.value) {
-      const { clientWidth: leftWidth } = leftWrapperRef.value.$el;
-      const { clientWidth: rightWidth } = rightWrapperRef.value;
-      const useX = leftWidth > rightWidth ? leftWidth : rightWidth;
-      return {
-        width: useX + "px",
-      };
-    } else {
-      return {};
-    }
-  });
 </script>
 
 <template>
   <header class="h-16">
-    <div class="h-16 fixed top-0 left-0 z-50 w-full bg-white/80 backdrop-blur">
-      <div class="container mx-auto h-full flex items-center justify-between">
-        <SiteLogo
-          ref="leftWrapperRef"
-          class="font-semibold"
-          :style="calculateX"
-        />
-        <nav class="h-full px-4 text-xs">
-          <ul class="h-full flex items-center justify-center space-x-2">
+    <div class="h-16 fixed top-0 left-0 z-50 w-full bg-white/90 backdrop-blur">
+      <div class="container mx-auto h-full flex items-center">
+        <SiteLogo ref="leftWrapperRef" />
+        <nav class="flex-grow h-full px-4 text-xs">
+          <ul class="h-full flex items-center space-x-2">
             <li class="h-full flex items-center">
               <NavItemDropdown
                 class="h-full flex items-center"
@@ -41,7 +21,7 @@
               >
                 <template #trigger>
                   <a class="h-full flex items-center space-x-1 px-3 transition group-hover:text-green-600 cursor-pointer rounded">
-                    <span>自主项目</span>
+                    <span>项目</span>
                     <Iconify
                       v-if="pending"
                       icon="line-md:downloading-loop"
@@ -101,37 +81,19 @@
               </NavItemDropdown>
             </li>
             <li class="h-full flex items-center">
-              <NavItemDropdown
-                class="h-full flex items-center"
-                :panel="false"
-              >
+              <NavItemDropdown class="h-full flex items-center">
                 <template #trigger>
                   <a class="h-full flex items-center space-x-1 px-3 transition group-hover:text-green-600 cursor-pointer rounded">
-                    <span>第三方应用</span>
+                    <span>文章</span>
                   </a>
                 </template>
               </NavItemDropdown>
             </li>
             <li class="h-full flex items-center">
-              <NavItemDropdown
-                class="h-full flex items-center"
-                :panel="false"
-              >
+              <NavItemDropdown class="h-full flex items-center">
                 <template #trigger>
                   <a class="h-full flex items-center space-x-1 px-3 transition group-hover:text-green-600 cursor-pointer rounded">
-                    <span>职业培训</span>
-                  </a>
-                </template>
-              </NavItemDropdown>
-            </li>
-            <li class="h-full flex items-center">
-              <NavItemDropdown
-                class="h-full flex items-center"
-                :panel="false"
-              >
-                <template #trigger>
-                  <a class="h-full flex items-center space-x-1 px-3 transition group-hover:text-green-600 cursor-pointer rounded">
-                    <span>优秀开源项目</span>
+                    <span>书架</span>
                   </a>
                 </template>
               </NavItemDropdown>
@@ -141,7 +103,6 @@
         <div
           ref="rightWrapperRef"
           class="flex items-center justify-end space-x-4"
-          :style="calculateX"
         >
           <template v-if="token">
             <SiteProfileHeadCard />

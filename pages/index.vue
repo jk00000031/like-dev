@@ -28,7 +28,7 @@
         <div class="space-y-4">
           <p class="text-sm">解放浏览器标签，不再占用你私人收藏领地</p>
           <p>
-            <DeButtonLink
+            <DsButtonLink
               to="/console/accounts/login"
               type="primary"
               class="w-40"
@@ -38,7 +38,7 @@
                 icon="uiw:swap-right"
                 size="18"
               />
-            </DeButtonLink>
+            </DsButtonLink>
           </p>
         </div>
       </div>

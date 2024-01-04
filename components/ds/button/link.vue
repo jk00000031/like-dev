@@ -2,7 +2,7 @@
   import type { ButtonProp } from "../prop";
   import { buttonTypeClass } from "../prop";
 
-  defineProps<Omit<ButtonProp, "nativeType">>();
+  defineProps<Partial<Omit<ButtonProp, "nativeType">> & Pick<ButtonProp, "to">>();
 </script>
 
 <template>

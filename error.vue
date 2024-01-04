@@ -1,31 +1,30 @@
 <script lang="ts" setup>
-  import DefaultLayout from "./layouts/default.vue";
-
   const router = useRouter();
   const error = useError();
 </script>
 
 <template>
-  <DefaultLayout>
-    <section class="container mx-auto py-20 flex items-center justify-center">
+  <main class="w-screen h-screen bg-slate-100 text-zinc-500">
+    <div class="container mx-auto py-36 flex items-center justify-center">
       <div class="flex items-start space-x-4">
         <Iconify
           icon="fluent:cloud-error-24-regular"
-          size="98"
+          size="81"
           class="inline"
         />
-        <div class="space-y-2 py-3">
-          <h1 class="text-5xl font-sans">{{ error?.statusCode }}</h1>
+        <div class="space-y-4 py-2">
+          <h1 class="text-6xl font-sans">{{ error?.statusCode }}</h1>
           <p>{{ error?.message }}</p>
           <p>
             <NButton
               type="primary"
+              quaternary
               @click="router.back()"
               >返回上一页</NButton
             >
           </p>
         </div>
       </div>
-    </section>
-  </DefaultLayout>
+    </div>
+  </main>
 </template>

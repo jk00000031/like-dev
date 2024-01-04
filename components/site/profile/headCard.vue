@@ -40,6 +40,17 @@
         />
         <span>账户资料</span>
       </NuxtLink>
+      <NuxtLink
+        to="/"
+        class="flex items-center space-x-1 leading-9 px-3 rounded-md transition hover:bg-zinc-100"
+      >
+        <Iconify
+          icon="solar:history-outline"
+          size="18"
+        />
+        <span>操作历史</span>
+      </NuxtLink>
+      <hr class="bg-zinc-300 my-2" />
       <a
         class="flex items-center space-x-1 leading-9 px-3 rounded-md transition hover:bg-zinc-100 cursor-pointer"
         @click="handleLogout"

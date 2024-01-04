@@ -1,21 +1,20 @@
 <script setup lang="ts">
+  import { useBooksFilterCurrentYear } from "~/composables/fetch/books";
   import { useProjectFilterCurrentYear } from "~/composables/fetch/projects";
   import { useAuthorisationProfile } from "~/composables/state/useAuthorisation";
-  import { useLunarCalendar } from "~/composables/utils/date/useLunarCalendar";
+  import { useCurrentYear } from "~/composables/utils/date/useDate";
 
   const profile = useAuthorisationProfile();
-  const lunar = useLunarCalendar();
 
-  const { data: projects, pending } = await useProjectFilterCurrentYear();
+  // 获取今年的项目
+  const { data: projectResult, pending: projectPending } = await useProjectFilterCurrentYear();
+  const projectsRaw = toRaw(unref(projectResult));
+  const projects: any = projectsRaw?.data || [];
 
-  const books = ref(
-    Array.from({ length: 5 }, (_, index) => ({
-      id: index + 1,
-      name: "《阿里云效操作手册》",
-      descript: "或许你只是听过阿里，但没用过阿里云旗下的云效平台，没关系！本书带你深入了解该平台以及该平台的业务",
-      categorys: [{ name: "操作手册" }, { name: "CVP" }],
-    })),
-  );
+  // 获取今年写的书
+  const { data: bookResult, pending: bookPending } = await useBooksFilterCurrentYear();
+  const booksRaw = toRaw(unref(bookResult));
+  const books: any = booksRaw?.data || [];
 
   function getRandomColor() {
     const letters = "0123456789ABCDEF";
@@ -91,38 +90,74 @@
         </div>
       </aside>
       <div class="flex-grow space-y-6">
+        <section class="rounded-md py-2 px-3 text-sm bg-blue-500 text-white">
+          <p class="flex items-center space-x-2">
+            <Iconify
+              icon="uiw:date"
+              size="16"
+            />
+            <span>所有的筛选条件时间均为西方纪年</span>
+          </p>
+        </section>
         <section>
-          <h3 class="text-base mb-4">今{{ lunar.year }}做了什么项目</h3>
-          <ul class="grid grid-cols-4 gap-4">
+          <div class="mb-4 space-y-2">
+            <h3 class="text-base">{{ useCurrentYear() }} 做了什么项目</h3>
+          </div>
+          <template v-if="projectPending">
+            <div class="py-12 flex items-center justify-center">
+              <Iconify
+                icon="line-md:loading-twotone-loop"
+                size="26"
+              />
+            </div>
+          </template>
+          <template v-else-if="!projects.length">
+            <div class="py-12 text-center text-zinc-400 space-y-4">
+              <Iconify
+                icon="mdi:note-remove-outline"
+                size="32"
+                class="inline mx-auto"
+              />
+              <p>怎么一个项目都没有？大海的鱼都被你摸没了</p>
+            </div>
+          </template>
+          <ul
+            v-else
+            class="grid grid-cols-4 gap-4"
+          >
             <li
-              v-for="book in books"
-              :key="book.id"
+              v-for="project in projects"
+              :key="project.id"
             >
               <div class="border rounded-md p-4">
                 <h4 class="text-sm">
-                  <NuxtLink
-                    to="/book/1"
-                    class="text-green-600 transition hover:underline underline-offset-2"
-                  >
-                    {{ book.name }}
-                  </NuxtLink>
+                  <span class="text-green-600 transition hover:underline underline-offset-2">
+                    {{ project.name }}
+                  </span>
                 </h4>
-                <div class="text-xs my-3 text-zinc-500">{{ book.descript }}</div>
-                <p
-                  v-if="book.categorys && book.categorys.length"
-                  class="text-xs space-x-3 text-zinc-500"
-                >
-                  <span
-                    v-for="cate in book.categorys"
-                    :key="cate.name"
+                <div class="text-xs my-3 text-zinc-500">{{ project.descript }}</div>
+                <p class="text-xs space-x-3 text-zinc-500">
+                  <a
+                    v-if="project.docLink"
+                    :href="project.docLink"
                     class="inline-flex items-center"
                   >
-                    <em
-                      class="w-3 h-3 rounded-full mr-1"
-                      :style="{ backgroundColor: getRandomColor() }"
-                    ></em>
-                    {{ cate.name }}
-                  </span>
+                    <span>文档</span>
+                  </a>
+                  <a
+                    v-if="project.protographLink"
+                    :href="project.protographLink"
+                    class="inline-flex items-center"
+                  >
+                    <span>原型图</span>
+                  </a>
+                  <a
+                    v-if="project.designLink"
+                    :href="project.designLink"
+                    class="inline-flex items-center"
+                  >
+                    <span>设计图</span>
+                  </a>
                 </p>
               </div>
             </li>
@@ -137,7 +172,28 @@
         </section>
         <section>
           <h3 class="text-base mb-4">你在本站出过的书</h3>
-          <ul class="grid grid-cols-4 gap-4">
+          <template v-if="bookPending">
+            <div class="py-12 flex items-center justify-center">
+              <Iconify
+                icon="line-md:loading-twotone-loop"
+                size="26"
+              />
+            </div>
+          </template>
+          <template v-else-if="!projects.length">
+            <div class="py-12 text-center text-zinc-400 space-y-4">
+              <Iconify
+                icon="mdi:note-remove-outline"
+                size="32"
+                class="inline mx-auto"
+              />
+              <p>你今年还没有出过书哦~</p>
+            </div>
+          </template>
+          <ul
+            v-else
+            class="grid grid-cols-4 gap-4"
+          >
             <li
               v-for="book in books"
               :key="book.id"

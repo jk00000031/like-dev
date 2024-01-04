@@ -12,10 +12,10 @@ export interface ButtonProp {
 }
 
 export const buttonTypeClass = computed(() =>
-  cva(["text-sm font-sans rounded transition border bg-white text-white inline-flex items-center justify-center space-x-3"], {
+  cva(["text-sm font-sans rounded transition border text-white inline-flex items-center justify-center space-x-3"], {
     variants: {
       intent: {
-        normal: "border-zinc-300 hover:border-green-500 text-zinc-500 hover:text-green-500".split(" "),
+        normal: ["border-zinc-300 hover:border-green-500 text-zinc-500 hover:text-green-500 bg-white"],
         primary: ["border-green-500 hover:border-green-600 bg-green-500 hover:bg-green-600"],
         success: ["border-teal-500 hover:border-teal-500"],
         warn: ["border-amber-500 hover:border-amber-600"],

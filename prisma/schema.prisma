@@ -87,6 +87,7 @@ model Books {
   descript  String
   userId    Int
   director  Users   @relation(fields: [userId], references: [id])
+  createAt  DateTime @default(now())
   chapters  Chapters[]
   categoryId  Int
   category  Categorys @relation(fields: [categoryId], references: [id])

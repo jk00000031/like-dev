@@ -9,7 +9,7 @@ export default defineEventHandler((event) => {
   end = end || `${useCurrentYear()}-12-31`;
 
   try {
-    const project = prisma.projects.findMany({
+    const project = prisma.books.findMany({
       where: {
         createAt: {
           gte: start,

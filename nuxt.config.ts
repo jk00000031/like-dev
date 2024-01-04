@@ -50,6 +50,8 @@ export default defineNuxtConfig({
 
   // ----
   runtimeConfig: {
-    projectName: "DevExchange",
+    public: {
+      projectName: "共享演进",
+    },
   },
 });

@@ -1,5 +1,10 @@
 <script lang="ts" setup>
+import { onClickOutside } from '@vueuse/core';
+
 const showPanel = ref(false);
+const navItemDropdownRef = ref();
+onClickOutside(navItemDropdownRef, () => (showPanel.value = false));
+
 const props = defineProps({
   panel: Boolean
 });
@@ -13,7 +18,7 @@ function mouseleave() {
 </script>
 
 <template>
-  <div class="group" @mouseenter="mousemove" @mouseleave="mouseleave">
+  <div ref="navItemDropdownRef" class="group" @mouseenter="mousemove" @mouseleave="mouseleave">
     <slot name="trigger" />
     <Transition name="nav-item" mode="in-out">
       <div

@@ -44,7 +44,7 @@ function handleAccountSubmit() {
               <NInput v-model:value="accountFields.account" placeholder="工号/邮箱" />
             </NFormItem>
             <NFormItem path="password">
-              <NInput v-model:value="accountFields.password" placeholder="密码" type="password" show-password-toggle />
+              <NInput v-model:value="accountFields.password" placeholder="密码" type="password" show-password-on="click" />
             </NFormItem>
             <NFormItem>
               <div class="flex-grow">

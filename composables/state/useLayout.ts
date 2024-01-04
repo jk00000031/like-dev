@@ -1,1 +1,1 @@
-export const useHeaderBothSideWidth = () => useState("headerBothSideWidth", () => 0);
+export const useHeaderBothSideWidth = () => useState('headerBothSideWidth', () => 0);

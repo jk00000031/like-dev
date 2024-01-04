@@ -1,7 +1,7 @@
-import { useFetchException } from "~/composables/exception/useFetchException";
-import { useResult } from "~/composables/useFetchResult";
-import { useCurrentYear } from "~/composables/utils/date/useDate";
-import prisma from "~/prisma/client";
+import { useFetchException } from '~/composables/exception/useFetchException';
+import { useResult } from '~/composables/useFetchResult';
+import { useCurrentYear } from '~/composables/utils/date/useDate';
+import prisma from '~/prisma/client';
 
 export default defineEventHandler((event) => {
   let { start, end } = getRouterParams(event);
@@ -13,9 +13,9 @@ export default defineEventHandler((event) => {
       where: {
         createAt: {
           gte: start,
-          lte: end,
-        },
-      },
+          lte: end
+        }
+      }
     });
     return useResult(project);
   } catch (error) {

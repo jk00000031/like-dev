@@ -9,10 +9,7 @@
                 to="/console"
                 class="h-full flex items-center space-x-1 px-3 transition group-hover:text-green-400 cursor-pointer rounded"
               >
-                <Iconify
-                  icon="tabler:chart-line"
-                  size="16"
-                />
+                <Iconify icon="tabler:chart-line" size="16" />
                 <span>概览</span>
               </NuxtLink>
             </template>
@@ -25,10 +22,7 @@
                 to="/console/projects"
                 class="h-full flex items-center space-x-1 px-3 transition group-hover:text-green-400 cursor-pointer rounded"
               >
-                <Iconify
-                  icon="la:project-diagram"
-                  size="16"
-                />
+                <Iconify icon="la:project-diagram" size="16" />
                 <span>你的项目</span>
               </NuxtLink>
             </template>
@@ -41,10 +35,7 @@
                 to="/console/articles"
                 class="h-full flex items-center space-x-1 px-3 transition group-hover:text-green-400 cursor-pointer rounded"
               >
-                <Iconify
-                  icon="ph:article-medium-light"
-                  size="16"
-                />
+                <Iconify icon="ph:article-medium-light" size="16" />
                 <span>发表文章</span>
               </NuxtLink>
             </template>
@@ -57,10 +48,7 @@
                 to="/console/books"
                 class="h-full flex items-center space-x-1 px-3 transition group-hover:text-green-400 cursor-pointer rounded"
               >
-                <Iconify
-                  icon="iconoir:book"
-                  size="16"
-                />
+                <Iconify icon="iconoir:book" size="16" />
                 <span>书籍</span>
               </NuxtLink>
             </template>
@@ -73,10 +61,7 @@
                 to="/console/setting"
                 class="h-full flex items-center space-x-1 px-3 transition group-hover:text-green-400 cursor-pointer rounded"
               >
-                <Iconify
-                  icon="ion:cog-outline"
-                  size="16"
-                />
+                <Iconify icon="ion:cog-outline" size="16" />
                 <span>设置</span>
               </NuxtLink>
             </template>

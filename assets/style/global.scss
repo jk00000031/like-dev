@@ -3,12 +3,17 @@
 @tailwind utilities;
 
 body {
-  font: 14px "Noto Sans SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font:
+    14px 'Noto Sans SC',
+    'Helvetica Neue',
+    'Helvetica',
+    'Arial',
+    sans-serif;
 }
 
 .popover-indicate {
   &::before {
-    content: "";
+    content: '';
     @apply w-0 h-0 block border-[6px] border-solid border-transparent border-b-white ml-4 -mt-1.5;
   }
 

@@ -1,11 +1,11 @@
 @mixin fontFace($line, $weight, $style) {
-  font-family: "Noto Sans SC";
-  src: url("./NotoSansSC-#{$line}.ttf") format("ttf");
+  font-family: 'Noto Sans SC';
+  src: url('./NotoSansSC-#{$line}.ttf') format('ttf');
   font-style: $style;
   font-weight: $weight;
 }
 
-$lines: "Thin", "ExtraLight", "Light", "Regular", "Medium", "SemiBold", "Bold", "ExtraBold", "Black";
+$lines: 'Thin', 'ExtraLight', 'Light', 'Regular', 'Medium', 'SemiBold', 'Bold', 'ExtraBold', 'Black';
 $weights: 100, 200, 300, 400, 500, 600, 700, 800, 900;
 
 @each $line in $lines {

@@ -1,4 +1,4 @@
-import { setup } from "@css-render/vue3-ssr";
+import { setup } from '@css-render/vue3-ssr';
 
 export default defineNuxtPlugin((nuxtApp) => {
   if (process.server) {
@@ -8,21 +8,21 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.ssrContext.renderMeta = () => {
       if (!originalRenderMeta) {
         return {
-          headTags: collect(),
+          headTags: collect()
         };
       }
       const originalMeta = originalRenderMeta();
-      if ("then" in originalMeta) {
+      if ('then' in originalMeta) {
         return originalMeta.then((resolvedOriginalMeta: { [x: string]: string }) => {
           return {
             ...resolvedOriginalMeta,
-            headTags: resolvedOriginalMeta["headTags"] + collect(),
+            headTags: resolvedOriginalMeta['headTags'] + collect()
           };
         });
       } else {
         return {
           ...originalMeta,
-          headTags: originalMeta["headTags"] + collect(),
+          headTags: originalMeta['headTags'] + collect()
         };
       }
     };

@@ -1,9 +1,9 @@
-import { INSTALLED_KEY } from "./components/dev/make";
+import { INSTALLED_KEY } from './components/dev/make';
 
-declare module "vue" {
+declare module 'vue' {
   interface App {
-    [INSTALLED_KEY]: Boolean;
+    [INSTALLED_KEY]: boolean;
   }
 }
 
-declare module "chinese-lunar-calendar";
+declare module 'chinese-lunar-calendar';

@@ -1,7 +1,5 @@
-<script setup lang="ts"></script>
-
 <template>
   <ConsoleLayout>
-    <div>Books</div>
+    <div>Setting</div>
   </ConsoleLayout>
 </template>

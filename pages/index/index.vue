@@ -1,19 +1,16 @@
 <script setup lang="ts">
-  import linesPng from "~/assets/images/lines.png";
+import linesPng from '~/assets/images/lines.png';
 
-  const bannerBackground = computed(() => {
-    return {
-      background: `url(${linesPng}) no-repeat center 100%`,
-    };
-  });
+const bannerBackground = computed(() => {
+  return {
+    background: `url(${linesPng}) no-repeat center 100%`
+  };
+});
 </script>
 
 <template>
   <main>
-    <section
-      class="min-h-[640px] h-[calc(100vh-164px)] flex items-center"
-      :style="bannerBackground"
-    >
+    <section class="min-h-[640px] h-[calc(100vh-164px)] flex items-center" :style="bannerBackground">
       <div class="container mx-auto -translate-y-10">
         <div class="space-y-4 mb-10">
           <h1 class="text-5xl font-semibold">更方便的查找项目相关</h1>
@@ -28,16 +25,9 @@
         <div class="space-y-4">
           <p class="text-sm">解放浏览器标签，不再占用你私人收藏领地</p>
           <p>
-            <DsButtonLink
-              to="/console/accounts/login"
-              type="primary"
-              class="w-40"
-            >
+            <DsButtonLink to="/console/accounts/login" type="primary" class="w-40">
               <span>开始使用</span>
-              <Iconify
-                icon="uiw:swap-right"
-                size="18"
-              />
+              <Iconify icon="uiw:swap-right" size="18" />
             </DsButtonLink>
           </p>
         </div>

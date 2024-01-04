@@ -1,8 +1,8 @@
-import { useAuthorisationToken } from "~/composables/state/useAuthorisation";
+import { useAuthorisationToken } from '~/composables/state/useAuthorisation';
 
-export default defineNuxtRouteMiddleware((to, from) => {
+export default defineNuxtRouteMiddleware((to) => {
   const token = useAuthorisationToken();
   if (/(console)/.test(to.path) && !/^\/console\/accounts\/(login|register)/.test(to.path) && !token.value) {
-    return navigateTo("/console/accounts/login");
+    return navigateTo('/console/accounts/login');
   }
 });

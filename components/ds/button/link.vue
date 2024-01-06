@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { ButtonProp } from '../prop';
-import { buttonTypeClass } from '../prop';
+import type { ButtonProp } from './prop';
+import { buttonTypeClass } from './prop';
 
 defineProps<Partial<Omit<ButtonProp, 'nativeType'>> & Pick<ButtonProp, 'to'>>();
 </script>
@@ -10,3 +10,4 @@ defineProps<Partial<Omit<ButtonProp, 'nativeType'>> & Pick<ButtonProp, 'to'>>();
     <slot />
   </NuxtLink>
 </template>
+./prop./prop

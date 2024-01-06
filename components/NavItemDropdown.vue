@@ -2,15 +2,27 @@
 import { onClickOutside } from '@vueuse/core';
 
 const showPanel = ref(false);
+const panelRef = ref();
 const navItemDropdownRef = ref();
 onClickOutside(navItemDropdownRef, () => (showPanel.value = false));
 
-const props = defineProps({
+defineProps({
   panel: Boolean
 });
 
 function mousemove() {
-  setTimeout(() => (showPanel.value = true), 200);
+  showPanel.value = true;
+  nextTick(() => {
+    const { clientHeight } = panelRef.value;
+    const headerHeight = getComputedStyle(document.querySelector(':root') as Element).getPropertyValue('--shared-nav-height');
+    let useHeight = 0;
+    const matchArray = headerHeight.match(/\d+/g);
+    if (matchArray?.length) {
+      let h = +matchArray[0];
+      useHeight = clientHeight + h;
+    }
+    document.documentElement.style.setProperty('--shared-navitem-container-height', `${useHeight}px`);
+  });
 }
 function mouseleave() {
   showPanel.value = false;
@@ -20,13 +32,17 @@ function mouseleave() {
 <template>
   <div ref="navItemDropdownRef" class="group" @mouseenter="mousemove" @mouseleave="mouseleave">
     <slot name="trigger" />
-    <Transition name="nav-item" mode="in-out">
+    <Transition name="nav-item">
       <div
-        v-if="showPanel && props.panel"
-        class="absolute left-0 top-0 w-full bg-white/40 backdrop-blur -z-[1] pt-16 rounded-bl-lg rounded-br-lg shadow-lg"
+        v-show="panel && showPanel"
+        class="panel absolute left-0 top-0 w-full bg-neutral-900/80 backdrop-blur -z-[1] box-content h-[var(--shared-navitem-container-height)] max-h-[calc(100vh-var(--shared-nav-height))] overflow-hidden"
       >
-        <div class="bg-white">
-          <slot />
+        <div
+          class="h-[calc(100%-var(--shared-nav-height))] overflow-hidden bg-neutral-900/80 backdrop-blur shadow-lg mt-[var(--shared-nav-height)]"
+        >
+          <div ref="panelRef" class="container mx-auto">
+            <slot />
+          </div>
         </div>
       </div>
     </Transition>
@@ -34,13 +50,23 @@ function mouseleave() {
 </template>
 
 <style lang="scss" scoped>
+.panel {
+  &:not(.nav-item-enter-active):not(.nav-item-leave-active) {
+    > div {
+      @apply overflow-y-auto;
+    }
+  }
+}
+
 .nav-item-enter-active,
 .nav-item-leave-active {
-  @apply transition duration-150;
+  @apply transition delay-75;
+
+  transition: height var(--shared-transition-duration) cubic-bezier(0.4, 0, 0.6, 1);
 }
 
 .nav-item-enter-from,
 .nav-item-leave-to {
-  @apply opacity-0;
+  @apply h-0;
 }
 </style>

@@ -28,9 +28,12 @@ function getRandomColor() {
 
 <template>
   <ConsoleLayout>
-    <section v-if="profile?.profile?.status !== 1" class="text-xs text-center bg-amber-100 sticky top-28 z-20 left-0 w-full">
+    <div
+      v-if="profile?.profile?.status !== 1"
+      class="text-xs text-center bg-white/70 text-orange-500 backdrop-blur border-b sticky top-[calc(var(--shared-nav-height)+var(--shared-second-nav-height))] z-20 left-0 w-full"
+    >
       <div class="container mx-auto py-2">
-        <span class="space-x-2">
+        <p class="space-x-2">
           <Iconify icon="basil:notification-on-outline" size="14" class="inline align-middle" />
           <span>{{
             (
@@ -41,17 +44,16 @@ function getRandomColor() {
               } as any
             )[profile?.profile?.status] || '账号状态数据异常'
           }}</span>
-        </span>
+        </p>
       </div>
-    </section>
+    </div>
 
     <main class="container mx-auto flex py-8 space-x-10">
-      <aside class="w-56 flex-shrink-0">
+      <aside class="w-64 flex-shrink-0">
         <div class="pb-4 mb-4 border-b relative">
           <div class="w-32 h-32 mx-auto rounded-full overflow-hidden flex items-center justify-center ring-8 ring-zinc-300">
             <img :src="profile.avatar" alt="" />
           </div>
-          <SiteProfileMood class="absolute top-24 right-1" />
           <div class="mt-8 text-center">
             <h3 class="text-lg font-sans font-semibold">{{ profile.nickName }}</h3>
             <p class="text-sm text-zinc-500">{{ profile.account }}</p>
@@ -71,12 +73,6 @@ function getRandomColor() {
         </div>
       </aside>
       <div class="flex-grow space-y-6">
-        <section class="rounded-md py-2 px-3 text-sm bg-blue-500 text-white">
-          <p class="flex items-center space-x-2">
-            <Iconify icon="uiw:date" size="16" />
-            <span>所有的筛选条件时间均为西方纪年</span>
-          </p>
-        </section>
         <section>
           <div class="mb-4 space-y-2">
             <h3 class="text-base">{{ useCurrentYear() }} 做了什么项目</h3>

@@ -51,7 +51,7 @@ export default defineNuxtConfig({
   // ----
   runtimeConfig: {
     public: {
-      projectName: '共享演进'
+      projectName: '共享方式'
     }
   },
 
@@ -59,7 +59,7 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       meta: [
-        { key: 'keyword', content: '共享,共享演进,开发共享,开发者共享,Shared,Shared Evolution,Developer Shared' },
+        { key: 'keyword', content: '共享,共享演进,共享方式,开发共享,开发者共享,Shared,Shared Evolution,Developer Shared' },
         { key: 'description', content: '快速搭建组织内部私有的技术网站' }
       ],
       title: '分享你我对技术的渴望'

@@ -9,7 +9,7 @@ const projectList = computed<any>(() => toRaw(unref(projects))?.data);
 
 <template>
   <nav class="h-[var(--shared-nav-height)]">
-    <header class="fixed top-0 left-0 z-50 w-full bg-zinc-950/90 text-zinc-200 backdrop-blur">
+    <header class="fixed top-0 left-0 z-50 w-full bg-zinc-950/90 text-neutral-300 backdrop-blur">
       <div class="container mx-auto flex items-center">
         <SiteLogo ref="leftWrapperRef" class="flex-grow" />
         <ul class="px-4 text-xs flex items-center space-x-2">

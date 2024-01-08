@@ -7,7 +7,11 @@ import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 export default defineNuxtConfig({
   // 是否启用 Nuxt 官方提供的开发调试工具
   // 开启后在应用下方中间会出现一个徽标，点击则出现工具
+  // 该工具不建议在生产环境使用
   devtools: { enabled: true },
+
+  // 第三方模块
+  modules: ['@nuxtjs/google-fonts'],
 
   // 使用 NaiveUI Module 要做的兼容处理，否则会报错并无法使用该 UI 组件库
   // 处理完编译兼容后做项目自动引入
@@ -27,7 +31,7 @@ export default defineNuxtConfig({
   },
 
   // 引入 CSS
-  css: ['~/assets/fonts/noto-sans-sc/noto-sans-sc.scss', '~/assets/style/global.scss'],
+  css: ['~/assets/style/global.scss'],
 
   // 项目中别名
   alias: {

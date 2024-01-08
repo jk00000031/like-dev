@@ -46,9 +46,9 @@ const dropdownMenus: Array<(Partial<Omit<DropdownMenuItem, 'label'>> & Pick<Drop
             <NuxtLink
               :to="item.to"
               :key="item.to"
-              class="flex items-center space-x-1 leading-9 px-3 rounded-md transition hover:bg-zinc-100"
+              class="text-xs flex items-center space-x-2 leading-8 px-3 rounded-md transition hover:bg-zinc-100"
             >
-              <Iconify v-if="item.icon" :icon="item.icon" size="18" />
+              <Iconify v-if="item.icon" :icon="item.icon" size="16" />
               <span>{{ item.label }}</span>
             </NuxtLink>
           </template>
@@ -56,10 +56,10 @@ const dropdownMenus: Array<(Partial<Omit<DropdownMenuItem, 'label'>> & Pick<Drop
           <template v-else>
             <a
               :key="item.label"
-              class="flex items-center space-x-1 leading-9 px-3 rounded-md transition hover:bg-zinc-100 cursor-pointer"
+              class="text-xs flex items-center space-x-2 leading-8 px-3 rounded-md transition hover:bg-zinc-100 cursor-pointer"
               @click="item?.onClick"
             >
-              <Iconify v-if="item.icon" :icon="item.icon" size="18" />
+              <Iconify v-if="item.icon" :icon="item.icon" size="16" />
               <span>{{ item.label }}</span>
             </a>
           </template>

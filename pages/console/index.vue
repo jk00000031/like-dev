@@ -30,9 +30,9 @@ function getRandomColor() {
   <ConsoleLayout>
     <div
       v-if="profile?.profile?.status !== 1"
-      class="text-xs text-center bg-white/70 text-orange-500 backdrop-blur border-b sticky top-[calc(var(--shared-nav-height)+var(--shared-second-nav-height))] z-20 left-0 w-full"
+      class="text-sm text-center bg-amber-100/90 text-orange-500 backdrop-blur sticky top-[calc(var(--shared-nav-height)+var(--shared-second-nav-height))] z-20 left-0 w-full"
     >
-      <div class="container mx-auto py-2">
+      <div class="container mx-auto py-3">
         <p class="space-x-2">
           <Iconify icon="basil:notification-on-outline" size="14" class="inline align-middle" />
           <span>{{
@@ -60,7 +60,7 @@ function getRandomColor() {
           </div>
         </div>
         <div class="space-y-1">
-          <NuxtLink to="/console/setting/profile" class="flex items-center py-2 px-4 rounded-md space-x-1 transition hover:bg-zinc-100">
+          <NuxtLink to="/console/setting" class="flex items-center py-2 px-4 rounded-md space-x-1 transition hover:bg-zinc-100">
             <Iconify icon="material-symbols-light:lab-profile-outline" size="18" />
             <span>修改你的资料</span>
           </NuxtLink>

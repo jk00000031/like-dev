@@ -5,8 +5,10 @@
         <p>
           <span>&copy;2024 MIT</span>
         </p>
-        <p>
-          <SiteGithub />
+        <p class="flex items-center space-x-2">
+          <span class="text-xs text-zinc-500">代码托管 - </span>
+          <SiteDepositGitee />
+          <SiteDepositGithub />
         </p>
       </div>
     </div>

@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   // 第三方模块
-  modules: ['@nuxtjs/google-fonts'],
+  modules: [],
 
   // 使用 NaiveUI Module 要做的兼容处理，否则会报错并无法使用该 UI 组件库
   // 处理完编译兼容后做项目自动引入

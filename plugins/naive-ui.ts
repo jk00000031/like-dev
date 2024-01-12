@@ -1,4 +1,8 @@
 import { setup } from '@css-render/vue3-ssr';
+// 通用字体
+import 'vfonts/Lato.css';
+// 等宽字体
+import 'vfonts/FiraCode.css';
 
 export default defineNuxtPlugin((nuxtApp) => {
   if (process.server) {

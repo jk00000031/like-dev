@@ -3,7 +3,8 @@ import mossPng from '~/assets/images/moss2.png';
 
 const bannerBackground = computed(() => {
   return {
-    background: `url(${mossPng}) no-repeat top center`
+    background: `url(${mossPng}) no-repeat top center`,
+    backgroundPosition: '50% 15%'
   };
 });
 </script>

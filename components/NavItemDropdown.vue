@@ -35,11 +35,9 @@ function mouseleave() {
     <Transition name="nav-item">
       <div
         v-show="panel && showPanel"
-        class="panel absolute left-0 top-0 w-full bg-neutral-900/80 backdrop-blur -z-[1] box-content h-[var(--shared-navitem-container-height)] max-h-[calc(100vh-var(--shared-nav-height))] overflow-hidden"
+        class="panel absolute left-0 top-[var(--shared-nav-height)] w-full bg-white shadow-lg -z-[1] box-content h-[var(--shared-navitem-container-height)] max-h-[calc(100vh-calc(var(--shared-nav-height)*2))] overflow-hidden"
       >
-        <div
-          class="h-[calc(100%-var(--shared-nav-height))] overflow-hidden bg-neutral-900/80 backdrop-blur shadow-lg mt-[var(--shared-nav-height)]"
-        >
+        <div class="h-[calc(100%-var(--shared-nav-height))] overflow-hidden bg-white shadow-lg mt-[var(--shared-nav-height)]">
           <div ref="panelRef" class="container mx-auto">
             <slot />
           </div>

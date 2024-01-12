@@ -9,19 +9,19 @@ const projectList = computed<any>(() => toRaw(unref(projects))?.data);
 
 <template>
   <nav class="h-[var(--shared-nav-height)]">
-    <header class="fixed top-0 left-0 z-50 w-full bg-zinc-950/90 text-neutral-300 backdrop-blur">
+    <header class="fixed top-0 left-0 z-50 w-full bg-white/90 text-neutral-600 backdrop-blur">
       <div class="container mx-auto flex items-center">
-        <SiteLogo ref="leftWrapperRef" class="flex-grow" />
-        <ul class="px-4 text-xs flex items-center space-x-2">
+        <SiteLogo ref="leftWrapperRef" mode="dark" class="flex-grow" />
+        <ul class="px-4 flex items-center space-x-4">
           <li class="flex items-center">
             <NavItemDropdown class="flex items-center" panel>
               <template #trigger>
                 <a
-                  class="h-[var(--shared-nav-height)] flex items-center space-x-1 px-3 transition group-hover:text-white cursor-pointer rounded"
+                  class="h-[var(--shared-nav-height)] flex items-center space-x-0.5 px-2 transition group-hover:text-black cursor-pointer rounded"
                 >
                   <span>项目</span>
                   <Iconify v-if="pending" icon="line-md:downloading-loop" />
-                  <Iconify icon="mingcute:down-line" class="transition group-hover:rotate-180" />
+                  <Iconify icon="mingcute:down-line" size="14" class="transition group-hover:rotate-180" />
                 </a>
               </template>
               <template v-if="!projectList.length">
@@ -58,7 +58,7 @@ const projectList = computed<any>(() => toRaw(unref(projects))?.data);
               <template #trigger>
                 <NuxtLink
                   to="/articles"
-                  class="h-[var(--shared-nav-height)] flex items-center space-x-1 px-3 transition group-hover:text-white cursor-pointer rounded"
+                  class="h-[var(--shared-nav-height)] flex items-center space-x-1 px-2 transition group-hover:text-black cursor-pointer rounded"
                 >
                   <span>文章</span>
                 </NuxtLink>
@@ -70,12 +70,46 @@ const projectList = computed<any>(() => toRaw(unref(projects))?.data);
               <template #trigger>
                 <NuxtLink
                   to="/bookshelf"
-                  class="h-[var(--shared-nav-height)] flex items-center space-x-1 px-3 transition group-hover:text-white cursor-pointer rounded"
+                  class="h-[var(--shared-nav-height)] flex items-center space-x-1 px-2 transition group-hover:text-black cursor-pointer rounded"
                 >
                   <span>书架</span>
                 </NuxtLink>
               </template>
             </NavItemDropdown>
+          </li>
+          <li class="flex items-center">
+            <NavItemDropdown class="flex items-center">
+              <template #trigger>
+                <NuxtLink
+                  to="/bookshelf"
+                  class="h-[var(--shared-nav-height)] flex items-center space-x-1 px-2 transition group-hover:text-black cursor-pointer rounded"
+                >
+                  <span>Issue</span>
+                </NuxtLink>
+              </template>
+            </NavItemDropdown>
+          </li>
+          <li class="flex items-center">
+            <NavItemDropdown class="flex items-center">
+              <template #trigger>
+                <NuxtLink
+                  to="/bookshelf"
+                  class="h-[var(--shared-nav-height)] flex items-center space-x-1 px-2 transition group-hover:text-black cursor-pointer rounded"
+                >
+                  <span>应用评分</span>
+                </NuxtLink>
+              </template>
+            </NavItemDropdown>
+          </li>
+          <li class="flex items-center group">
+            <a
+              href="https://www.baidu.com"
+              target="_blank"
+              class="h-[var(--shared-nav-height)] flex items-center space-x-0.5 px-2 transition group-hover:text-black cursor-pointer rounded"
+            >
+              <span>共享大厅</span>
+              <Iconify icon="ic:round-open-in-new" size="14" />
+            </a>
           </li>
         </ul>
         <div ref="rightWrapperRef" class="flex-grow flex items-center justify-end space-x-4">
